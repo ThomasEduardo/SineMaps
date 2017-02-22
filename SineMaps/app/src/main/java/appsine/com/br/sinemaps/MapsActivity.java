@@ -14,6 +14,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import appsine.com.br.sinemaps.DataReceive;
+import appsine.com.br.sinemaps.R;
+import appsine.com.br.sinemaps.ServiceGenerator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,8 +51,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMap.getUiSettings().setMapToolbarEnabled(false);
 
-        //padrao do googl
-         LatLng actualArea = new LatLng(latitude,  longitude);
+
+        LatLng actualArea = new LatLng(latitude,  longitude);
         MarkerOptions Mo = new MarkerOptions()
                 .position(actualArea)
                 .title("Posição atual");
@@ -71,7 +74,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 double longLat = Double.parseDouble(sine.getLongitude());
                 mMap.addMarker(new MarkerOptions().position(
                         new LatLng(lati,longLat))
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.icone))
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker))
                         .title(sine.getNome()));
             }
         } else {
