@@ -1,33 +1,15 @@
-package appsine.com.br.sinemaps;
 
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
-import android.util.Log;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+//package appsine.com.br.sinemaps.activities;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import appsine.com.br.sinemaps.DataReceive;
-import appsine.com.br.sinemaps.R;
 import appsine.com.br.sinemaps.ServiceGenerator;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, Callback<List<DataReceive>> {
+// public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, Callback<List<Sine>> {
 
-
+/*
     private  GoogleMap mMap;
     double longitude;
     double latitude;
-    private List<DataReceive> sines;
+    private List<Sine> sines;
 
 
     @Override
@@ -60,16 +42,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(Mo);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(actualArea, 8));
 
-        Call<List<DataReceive>> call = ServiceGenerator.getInstance().getService().getSinesComRaio(latitude,longitude);
+        Call<List<Sine>> call = ServiceGenerator.getInstance().getService().getSinesComRaio(latitude,longitude);
         Log.i(this.getClass().getName(), "Buscando Sines");
         call.enqueue(this);
 
     }
     @Override
-    public void onResponse(Call<List<DataReceive>> call, Response<List<DataReceive>> response) {
+    public void onResponse(Call<List<Sine>> call, Response<List<Sine>> response) {
         if (response.isSuccessful()) {
             sines = response.body();
-            for (DataReceive sine : sines) {
+            for (Sine sine : sines) {
                 double lati = Double.parseDouble(sine.getLatitude());
                 double longLat = Double.parseDouble(sine.getLongitude());
                 mMap.addMarker(new MarkerOptions().position(
@@ -82,7 +64,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
     @Override
-    public void onFailure(Call<List<DataReceive>> call, Throwable t) {
+    public void onFailure(Call<List<Sine>> call, Throwable t) {
 
     }
 }

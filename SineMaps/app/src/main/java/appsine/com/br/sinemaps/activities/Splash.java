@@ -1,46 +1,19 @@
+package appsine.com.br.sinemaps.activities;
 
 import android.app.Activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Window;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;import android.Manifest;
-import android.app.Activity;
-import android.app.Service;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Handler;
-import android.support.v4.app.ActivityCompat;
-import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 
 
-
-
-
-import java.util.Timer;
-import java.util.TimerTask;
-
-import appsine.com.br.sinemaps.MapsActivity;
 import appsine.com.br.sinemaps.R;
+import appsine.com.br.sinemaps.entidades.Sine;
 
 
-public class Splash extends Activity implements LocationListener,Runnable{
+public class Splash extends Activity implements Runnable {
 
-
+    /*
     // Location
     private LocationManager locationManager;
     private Location location;
@@ -53,6 +26,7 @@ public class Splash extends Activity implements LocationListener,Runnable{
 
     Intent intent;
     Bundle bundle;
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,13 +39,22 @@ public class Splash extends Activity implements LocationListener,Runnable{
 
     }
 
+    @Override
+    public void run() {
+        Intent i = new Intent(this, Sine.MainActivity.class);
+        startActivity(i);
+        finish();
+    }
 
+
+    /*
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
         if (requestCode == REQUEST_LOCATION) {
             if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             }
+
         }
     }
 
@@ -125,15 +108,6 @@ public class Splash extends Activity implements LocationListener,Runnable{
         }
     }
 
-    @Override
-    public void run() {
-        // Inicializar comunicação com o módulo de GPS do dispositivo móvel.
-        locationManager = (LocationManager) getSystemService(Service.LOCATION_SERVICE);
-
-        /*
-         * Verificar permissões de acesso. Desde a API 23 o usuário também precisa conscentir expressamente
-         * que permite o acesso ao GPS. A permissão do manifest também precisa ser adicionada.
-         */
         if (ActivityCompat.checkSelfPermission(Splash.this,
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(Splash.this,
@@ -200,6 +174,7 @@ public class Splash extends Activity implements LocationListener,Runnable{
         }
     }
 
+    /*
 
     //@Override
     //protected void onCreate(Bundle savedInstanceState) {
@@ -222,6 +197,6 @@ public class Splash extends Activity implements LocationListener,Runnable{
     //timerThread.start();
     // }
 
-
+*/
 
 }
